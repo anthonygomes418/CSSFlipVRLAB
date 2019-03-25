@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CIIED</title>
+
+    <style>
+
+        *{
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h1{
+  font-size: 2.5rem;
+  font-family: 'Montserrat';
+  font-weight: normal;
+  color: #FFFFFF;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+h3{
+  font-family: 'Helvetica';
+  font-weight: normal;
+  color: #FFFFFF;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.wrapper{
+  width: 90%;
+  margin: 0 auto;
+  max-width: 80rem;
+}
+
+.cols{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.col{
+  width: calc(25% - 2rem);
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.container{
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+	-webkit-perspective: 1000px;
+	        perspective: 1000px;
+}
+
+.front,
+.back{
+  background-size: cover;
+	background-position: center;
+	-webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	-o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	-webkit-backface-visibility: hidden;
+	        backface-visibility: hidden;
+	text-align: center;
+	min-height: 280px;
+	height: auto;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 1.5rem;
+}
+
+.back{
+  background: #cedce7;
+  background: -webkit-linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
+  background: -o-linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
+  background: linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
+}
+
+.front:after{
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    content: '';
+    display: block;
+    opacity: .6;
+    background-color: #000;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    border-radius: 10px;
+}
+.container:hover .front,
+.container:hover .back{
+    -webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    -o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.inner{
+    -webkit-transform: translateY(-50%) translateZ(60px) scale(0.94);
+            transform: translateY(-50%) translateZ(60px) scale(0.94);
+    top: 50%;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    outline: 1px solid transparent;
+    -webkit-perspective: inherit;
+            perspective: inherit;
+    z-index: 2;
+}
+
+.container .back{
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+}
+
+.container .front{
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+}
+
+.container:hover .back{
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.container:hover .front{
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.front .inner p{
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.front .inner p:after{
+  content: '';
+  width: 4rem;
+  height: 2px;
+  position: absolute;
+  background: #C6D4DF;
+  display: block;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: -.75rem;
+}
+
+.front .inner span{
+  color: rgba(255,255,255,0.7);
+  font-family: 'Montserrat';
+  font-weight: 300;
+}
+
+@media screen and (max-width: 64rem){
+  .col{
+    width: calc(33.333333% - 2rem);
+  }
+}
+
+@media screen and (max-width: 48rem){
+  .col{
+    width: calc(50% - 2rem);
+  }
+}
+
+@media screen and (max-width: 32rem){
+  .col{
+    width: 100%;
+    margin: 0 0 2rem 0;
+  }
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18.5px;
+  font-weight:bold;
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #000000;
+  color: white;
+}
+
+.header50 img {
+  float: left;
+  width: 150px;
+  height: 150px;
+}
+
+.header50 h1 {
+  position: relative;
+  top: 18px;
+  left: 10px;
+}
+
+
+    </style>
+
+</head>
+<body bgcolor="#111111">
+<div class="wrapper">
+
+
+<div class="header50">
+  <img src="logo.png" alt="logo" />
+    <img style="float:right" src="logo1.png" alt="logo" />
+  <h1 style="font-variant:small-caps;">The Center for Innovation, Entrepreneurship and Economic Development (CIEED)</h1>
+
+</div>
+
+
+<br>
+  <h3 style="font-family:Comic Sans MS, cursive, sans-serif">The Center for Innovation, Entrepreneurship and Economic Development (CIEED)
+will leverage the best of JSU’s STEM, business, and entrepreneurial capabilities, as
+well as collaborative potential in addressing some of society’s most pressing
+programs (via university-industry partnerships). The CIEED will take advantage of
+expertise co-location and facilitate the intersection of widely disparate learning and
+idea generation; a place for constant learning, common vision, as well as creativity
+and innovation. Researchers from across various disciplines will be able to design,
+develop, and innovate together from multidisciplinary perspectives and approaches.
+The research efforts will include design thinking and strategizing.</h3>
+
+<br>
+
+
+<div class="topnav">
+  <a class="active" href="http://www.jsums.edu/research" target="_blank" >Office of Research</a>
+    <a href="http://www.jsums.edu/technologytransfer/">Tech Transfer</a>
+    <a href="#about">News and Events</a>
+    <a href="#about">Resources</a>
+    <a href="#about">Photo Gallery</a>
+    <a href="http://www.jsums.edu/">JSU Home Page</a>
+
+</div>
+
+
+
+    <br>
+
+  <div class="cols">
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+				<div class="container">
+					<div class="front" style="background-image: url(https://gm1.ggpht.com/AuFNajiB0sZ6HrA6z4omiwi-PmXWRLs2pzBrlkNBA21A9rRkRgHtE51IrGWpAjzz86PXMLJ82Za5V5l-k-sRfPrnQeT_Zqpkzg54LslOIAF2KEkd0TS2Ea4DAz0yhrcg3-9X6hKviqP6e79LmJ-ZZAeMWEeD-TfGCiQySGsYPI340x64h8Bpvs61Z8x3kDLZyl1qJhGOJuLaBro8shBNLq_8ZtpGe6Va54l4ZULkTeI4bvanX20nIZpjJi1r2p8dMkw7ofhKRMNKFUj9nQyCJYKlb8FKNGpf9btrC07XlBHRyarY9-jD-VwapX3EReuu_f0lV0cBjWb-uLa5NPO6HoMxMA0sCCRXgRYcb-aBDG0O91FXp2bVNR9-j80gapKCsoPtpj_OiXl97SB9ie_fgCNnf8xF6ndZeUq0IDoQ1Z4iQlrK1SL1vVTWHXuCtf6Z2Pt1huUXIupUJ1K9_cLVHaWGwSmNdXLJGxrbdDXlsE90FMiTv_RaatWPeSF5VBSFLXflBO3OR46wNPNg_IsF6HAK0MZlXyAGRWM1U42JopT6zzTycO_hHAUviVzsa6ehb92YvprX-ZptzzGbQFx5YJLrFs92H84Mz8oYUfDZEbvpZlgJsU_Q95CCyx2jXxWKZr47_tPcdaYyhABDU2Lf2NoQenBO-y3UbsRhV9cGg2W4NPYW5kDmEyS6-fUwoGJEKVGwLXtCmGYEeEstRCekFu25Ou8lE9fTXIA=s0-l75-ft-l75-ft)">
+						<div class="inner">
+							<p>VR/AR</p>
+              <span>Academy</span>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+						  <p>The VR/AR Academy is a training and testing lab for the latest in virtual reality and augmented reality technology.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+            <div class="col" ontouchstart="this.classList.toggle('hover');">
+				<div class="container">
+					<div class="front" style="background-image: url(https://1.bp.blogspot.com/-vVBHalLEzzA/VWm-5C29QCI/AAAAAAAAAP4/JMtD12Fsttc/s1600/1.jpg)">
+						<div class="inner">
+							<p>Startup Accelerator/ Incubator</p>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+							<p>The Startup Accelerator/ Incubator helps innovators transition from science and other projects to
+startups, and help the startups build</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+				<div class="container">
+					<div class="front" style="background-image: url(https://makerspaceurbana.org/wp-content/uploads/2016/02/12715836_10108129898939171_4606711832201324365_o.jpg)">
+						<div class="inner">
+							<p>MakerSpace</p>
+              <span>TigerLab</span>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+							<p>The TigerLab will focus on creativity, collaboration and building a community where students can learn</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+				<div class="container">
+					<div class="front" style="background-image: url(https://i1.wp.com/universityinnovationfellows.org/wp-content/uploads/2016/10/UIF-Fall-2016.jpg?resize=1000%2C522)">
+						<div class="inner">
+							<p>Innovation Fellows</p>
+              <span>Program</span>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+							<p>The Innovation Fellows Program supported by the CIIED provides paid semester-long training</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+				<div class="container">
+					<div class="front" style="background-image: url(https://hbculifestyle.com/wp-content/uploads/2013/08/How-HBCU-Students-Can-Find-a-Great-Mentor.jpg)">
+						<div class="inner">
+							<p>CIIED Mentor</p>
+              <span>Network</span>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+							<p>The CIIED is seeking successful alumni entrepreneurs to help build the entrepreneurial culture</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+				<div class="container">
+					<div class="front" style="background-image: url(https://www.liberty.edu/media/1420/header/HDR_Group_Study_room2.jpeg)">
+						<div class="inner">
+							<p>Meeting Rooms</p>
+              <span>5 Available</span>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+							<p>Reserve one of our 5 collaboration rooms. These rooms provide for small team collaborations</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+				<div class="container">
+					<div class="front" style="background-image: url(https://kyleshewfelt.files.wordpress.com/2011/10/events-testimonials.jpg)">
+						<div class="inner">
+							<p>Event Hosting</p>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+							<p>We provide space for events hosted by organizations in the innovation, entrepreneurship</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+				<div class="container">
+					<div class="front" style="background-image: url(https://cdn.thisiswhyimbroke.com/images/harry-potter-triwizard-cup-lamp-thinkgeek-300x250.jpg)">
+						<div class="inner">
+							<p>Competitions & Showcases</p>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+							<p>CIIED will organize and host competitions where students can showcase their ideas. Winners will be sponsored to participate</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+ </div>
+
+<br>
+<br>
+<br>
+<br>
+<div>
+<p align="right" style="font-size:16px; color:#ffffff;font-family:Comic Sans MS, cursive, sans-serif">
+
+Jackson State University is designated as a "higher research activity"<br>
+Jackson State University | 1400 John R. Lynch Street | Jackson, MS | 39217 | 601-212-7971<br>
+Copyright 2019 Office of Research | All rights reserved. | A Military-Friendly University  <br>
+Website by <a href="" target="_blank" style="color:#00FF00;">Dr. Almeisha Campbell, <a href="https://www.linkedin.com/in/anthonygomes418/" target="_blank" style="color:#00FF00;">Anthony Gomes</a>, <a href="http://www.jsums.edu/research" style="color:#00FF00;">Office of Research</a><br>
+<br>
+
+ </p>
+</div>
+
+</body>
+</html>
